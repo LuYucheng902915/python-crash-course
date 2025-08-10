@@ -1,20 +1,15 @@
 [project]
 name = "python-crash-course"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "A collection of scripts for the 'Python Crash Course' book."
 authors = [
-    {name = "Lu Yucheng", email = "3170103552@zju.edu.cn"},
+    {name = "Lu Yucheng", email = "24126655@bjtu.edu.cn"},
 ]
-dependencies = []
 requires-python = "==3.11.*"
-readme = "README.md"
-license = {text = "MIT"}
 
+dependencies = []
 
-[tool.pdm]
-distribution = false
-
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "pytest>=8.4.1",
 ]
