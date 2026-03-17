@@ -2,20 +2,54 @@
 name = "python-crash-course"
 version = "0.1.0"
 description = "A collection of scripts for the 'Python Crash Course' book."
-authors = [
-    {name = "Lu Yucheng", email = "24126655@bjtu.edu.cn"},
-]
-requires-python = "==3.11.*"
-
+authors = [{ name = "Lu Yucheng", email = "24126655@bjtu.edu.cn" }]
+readme = "README.md"
+requires-python = ">=3.12"
 dependencies = []
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=8.4.1",
-]
+[dependency-groups]
+dev = ["mypy>=1.19.1", "pytest>=9.0.2", "ruff>=0.15.6"]
 
 [tool.mypy]
-python_version = "3.11"
-ignore_missing_imports = true
+python_version = "3.12"
+warn_unused_configs = true
+incremental = false
+exclude = ["pcc_3e"]
+strict = false
+check_untyped_defs = true
 warn_return_any = true
-warn_unused_ignores = true
+
+# [[tool.mypy.overrides]]
+# module = [
+#     "some_untyped_library",
+#     "another_untyped_library",
+# ]
+# ignore_missing_imports = true
+
+# [[tool.mypy.overrides]]
+# module = [
+#     "your_project.core.*",
+#     "your_project.services.*",
+# ]
+# disallow_untyped_defs = true
+
+[tool.pytest]
+addopts = ["-v", "--tb=short", "-x"]
+testpaths = ["src"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+fix = true
+# unsafe-fixes = true
+extend-exclude = ["pcc_3e"]
+
+[tool.ruff.lint]
+select = ["E", "F", "UP", "B", "SIM", "I"]
+ignore = ["E501"]
+
+# [tool.ruff.lint.per-file-ignores]
+# "__init__.py" = ["F401"]
+
+# [tool.ruff.format]
+# docstring-code-format = true

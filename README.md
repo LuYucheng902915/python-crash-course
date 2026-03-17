@@ -11,4 +11,3 @@ The goal is to practice Python fundamentals and document my progress.
 ## What I Learned & Practiced
 
 Coming soon.
-
